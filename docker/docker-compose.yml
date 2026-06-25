@@ -1,0 +1,11 @@
+services:
+  server:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../config:/app/config
+    environment:
+      - SERVER_CONFIG_TOML_PATH=/app/config/server_config.toml

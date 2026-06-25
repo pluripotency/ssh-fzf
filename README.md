@@ -46,6 +46,10 @@ password = 'password2'
 ```
 ./serv.sh
 ```
+or
+```
+docker compose -f docker/docker-compose.yml up
+```
 
 ### Prepare Client
 - config/config.toml
