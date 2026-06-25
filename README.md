@@ -56,7 +56,7 @@ password = 'password2'
 ```
 or
 ```
-docker compose -f docker/docker-compose.yml up
+docker compose -f docker/docker-compose.yml up --build
 ```
 
 ### Prepare Client
