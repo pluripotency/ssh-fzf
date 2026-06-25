@@ -64,6 +64,9 @@ docker compose -f docker/docker-compose.yml up --build
 
 | key | note |
 | - | - |
+| server| server to connect |
+| url | server url |
+| cert_path | certificate path to encrypt connection |
 | target | hostname list key |
 | hostname | target hostname |
 | ip | ip to use ssh connection |
@@ -71,6 +74,10 @@ docker compose -f docker/docker-compose.yml up --build
 
 
 ```toml
+[server]
+url = "https://127.0.0.1:8000"
+cert_path = "cert/cert.pem"
+
 [[target]]
 hostname = 'myhost'
 ip = '192.168.0.1'
