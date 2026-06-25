@@ -1,4 +1,5 @@
 import os
+import sys
 import getpass
 import requests
 from requests.adapters import HTTPAdapter
@@ -27,26 +28,30 @@ def pick_target(target_list):
     selected_hostname = selected.split(' ')[0]
     return misc.find(target_list, lambda item: item['hostname'] == selected_hostname)
 
-def set_sshpass(hostname, serverurl):
+def set_sshpass(hostname, server_config):
     masterpassword = getpass.getpass('masterpassword: ')
+    server_url = server_config.get('url', 'https://127.0.0.1:8000')
+    cert_path = server_config.get('cert_path', 'cert/cert.pem')
     session = requests.Session()
     session.mount('https://', HostnameIgnoreAdapter())
-    r = session.post(f"{serverurl}/api/key", json={"masterpassword": masterpassword, "hostname": hostname}, verify="cert/cert.pem")
+    r = session.post(f"{server_url.rstrip('/')}/api/key", json={"masterpassword": masterpassword, "hostname": hostname}, verify=cert_path)
     ssh_password = r.json()["value"]
     # ssh_password = getpass.getpass('set SSHPASS: ')
     os.environ['SSHPASS'] = ssh_password
 
 def run_ssh_fzf():
     env = load_config.load_env(['config'])
-    serverurl = env['config']['serverurl']
     target = pick_target(env['config']['target'])
     hostname = target["hostname"]
-    set_sshpass(hostname, serverurl)
+    server_config = env['config'].get('server', {})
+    set_sshpass(hostname, server_config)
     ssh_args = f'{target["username"]}@{target["ip"]}'
 
     # this will not return to python, just bash-ssh process(can use ctrl-c in ssh, etc.)
     print(f'connecting to {ssh_args}')
-    os.execvp("sshpass", ["sshpass", "-e", "ssh", ssh_args])
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os.execvp("sshpass", ["sshpass", "-e", "ssh", "-o", "StrictHostKeyChecking=accept-new", ssh_args])
 
 if __name__ == '__main__':
     run_ssh_fzf()

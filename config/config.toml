@@ -1,4 +1,7 @@
-serverurl = 'https://127.0.0.1:8000'
+[server]
+url = "https://127.0.0.1:8000"
+cert_path = "cert/cert.pem"
+
 [[target]]
 hostname = 'myhost'
 ip = '127.0.0.1'
