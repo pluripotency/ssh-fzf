@@ -1,0 +1,4 @@
+[[target]]
+hostname = 'myhost'
+ip = '127.0.0.1'
+username = 'user'

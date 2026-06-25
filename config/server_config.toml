@@ -1,0 +1,4 @@
+masterpassword = 'password'
+[[target]]
+hostname = 'myhost'
+password = 'password'
