@@ -1,6 +1,23 @@
 ## ssh-fzf
 easy ssh manager without remembering host password
 
+## Preparation
+### Install sshpass
+- Ubuntu
+```
+sudo apt update && sudo apt install sshpass
+```
+- RedHat
+```
+sudo dnf install sshpass
+```
+### install python packages
+- uv
+```
+uv venv
+uv sync
+```
+
 ## Usage
 ### Prepare Server
 - config/server_config.toml
