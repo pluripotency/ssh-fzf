@@ -24,3 +24,15 @@ def post_key(payload: dict):
         password = find_target(payload['hostname'])
         return {"value": password}
     return {"value": ""}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "server:app",
+        host="127.0.0.1",
+        port=8000,
+        ssl_keyfile="cert/key.pem",
+        ssl_certfile="cert/cert.pem",
+        reload=True
+    )
+
