@@ -25,4 +25,4 @@ COPY server.py ./
 EXPOSE 8000
 
 # Start the uvicorn server
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "server.py"]

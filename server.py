@@ -27,9 +27,10 @@ def post_key(payload: dict):
 
 if __name__ == "__main__":
     import uvicorn
+    host = os.environ.get("HOST", "127.0.0.1")
     uvicorn.run(
         "server:app",
-        host="127.0.0.1",
+        host=host,
         port=8000,
         ssl_keyfile="cert/key.pem",
         ssl_certfile="cert/cert.pem",

@@ -11,11 +11,19 @@ sudo apt update && sudo apt install sshpass
 ```
 sudo dnf install sshpass
 ```
+
 ### install python packages
 - uv
 ```
 uv venv
 uv sync
+```
+
+### prepare certs to encrypt network
+```
+./cert/create_certs.sh
+cert/key.pem
+cert/cert.pem
 ```
 
 ## Usage

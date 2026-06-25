@@ -7,5 +7,7 @@ services:
       - "8000:8000"
     volumes:
       - ../config:/app/config
+      - ../cert:/app/cert
     environment:
       - SERVER_CONFIG_TOML_PATH=/app/config/server_config.toml
+      - HOST=0.0.0.0
