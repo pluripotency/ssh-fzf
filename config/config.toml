@@ -1,6 +1,8 @@
 [server]
-url = "https://127.0.0.1:8000"
-cert_path = "cert/cert.pem"
+# url = "https://127.0.0.1:8000"
+# cert_path = "cert/cert.pem"
+url = "https://127.0.0.1:8080"
+cert_path = "../../host-credential-manager-go/cert/cacert.pem"
 
 [[target]]
 hostname = 'myhost'
