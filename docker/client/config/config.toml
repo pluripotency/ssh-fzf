@@ -6,7 +6,3 @@ cert_path = "cert/cacert.pem"
 hostname = 'myhost'
 ip = '127.0.0.1'
 username = 'worker'
-[[target]]
-hostname = 'resolute'
-ip = '192.168.0.140'
-username = 'worker'
