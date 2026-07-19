@@ -1,0 +1,11 @@
+services:
+  ssh-fzf:
+    image: ssh-fzf
+    build:
+      context: ../..
+      dockerfile: docker/client/Dockerfile
+    volumes:
+      - ./config/:/app/config
+    environment:
+      - CONFIG_TOML_PATH=/app/config/config.toml
+      - HOST=0.0.0.0

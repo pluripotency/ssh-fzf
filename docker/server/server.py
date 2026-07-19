@@ -3,6 +3,7 @@ import toml
 from fastapi import FastAPI
 
 conf_path = os.environ.get('SERVER_CONFIG_TOML_PATH')
+cert_path = os.environ.get('CERT_PATH')
 with open(conf_path, 'r') as f:
     server_config = toml.loads(f.read())
 
@@ -32,8 +33,8 @@ if __name__ == "__main__":
         "server:app",
         host=host,
         port=8000,
-        ssl_keyfile="cert/key.pem",
-        ssl_certfile="cert/cert.pem",
+        ssl_keyfile=f"{cert_path}/key.pem",
+        ssl_certfile=f"{cert_path}/cert.pem",
         reload=True
     )
 

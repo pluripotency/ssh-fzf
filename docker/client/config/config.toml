@@ -1,0 +1,12 @@
+[server]
+url = "https://127.0.0.1:8080"
+cert_path = "cert/cacert.pem"
+
+[[target]]
+hostname = 'myhost'
+ip = '127.0.0.1'
+username = 'worker'
+[[target]]
+hostname = 'resolute'
+ip = '192.168.0.140'
+username = 'worker'
